@@ -1,7 +1,6 @@
 package com.example.baliofvfx.phonestatus;
 
 import android.content.Context;
-import android.os.BatteryManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView batteryTextView;
     private TextView mTextMessage;
     BatteryStatus battery = new BatteryStatus();
     private Context context = MainActivity.this;
@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void testButton(View view){
-        battery.testFunction(context);
+    public void showBatteryPercentage(View view){
+        battery.testFunction(context, batteryTextView);
     }
 
     @Override
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        batteryTextView = (TextView) findViewById(R.id.batteryText);
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
