@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 public class BatteryStatus {
 
-    private TextView batteryTextView ;
 
     public void testFunction(Context context, TextView batteryTextView){
 
