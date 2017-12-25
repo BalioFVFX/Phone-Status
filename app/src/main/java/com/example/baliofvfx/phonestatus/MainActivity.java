@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.MainActivityId,batteryLevelFragment).commit();
                     return true;
                 case R.id.navigation_dashboard:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivityId, temperaturesFragment).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivityId,temperaturesFragment).commit();
                     return true;
                 case R.id.navigation_notifications:
                     getSupportFragmentManager().beginTransaction().replace(R.id.MainActivityId,statsFragment).commit();

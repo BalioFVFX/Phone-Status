@@ -28,8 +28,17 @@ public class BatteryStatus {
 //                , Float.toString(batteryLevel), Toast.LENGTH_LONG).show();
 
         batteryTextView.setText("Battery level: " + Float.toString(batteryLevel) + "%");
+    }
+
+    public void showBatteryTemperature(Context context, TextView batteryTemperatureTextView){
+
+        IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = context.registerReceiver(null, ifilter);
+
         float batteryTemp = (float)batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
-        Toast.makeText(context, Float.toString(batteryTemp) + "°C", Toast.LENGTH_SHORT).show();
+
+        batteryTemperatureTextView.setText(Float.toString(batteryTemp) + "°C");
+
     }
 
 
