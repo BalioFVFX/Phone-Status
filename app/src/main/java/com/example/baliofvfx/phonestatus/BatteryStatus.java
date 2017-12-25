@@ -35,7 +35,7 @@ public class BatteryStatus {
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryStatus = context.registerReceiver(null, ifilter);
 
-        float batteryTemp = (float)batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0);
+        float batteryTemp = ((float) batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0) / 10);
 
         batteryTemperatureTextView.setText(Float.toString(batteryTemp) + "°C");
 
