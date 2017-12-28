@@ -21,6 +21,7 @@ public class StatsFragment extends Fragment {
     private TextView androidVersionTextView;
     private TextView systemUpTimeTextView;
     private TextView wifiTextView;
+    private TextView networkTextView;
     NetworkStatus networkStatus = new NetworkStatus();
 
     int secondsUpTime = 0;
@@ -36,6 +37,7 @@ public class StatsFragment extends Fragment {
         showUptime(systemUpTimeTextView);
         androidVersionTextView.setText("Android SDK: " + Build.VERSION.SDK_INT + " " + Build.VERSION.RELEASE);
         networkStatus.showWiFiName(getContext(), wifiTextView);
+        networkStatus.showNetwrokName(getContext(), networkTextView);
     }
 
     @Override
@@ -44,6 +46,7 @@ public class StatsFragment extends Fragment {
         androidVersionTextView = (TextView)view.findViewById(R.id.androidVersionTextView);
         systemUpTimeTextView = (TextView)view.findViewById(R.id.systemUpTimeTextView);
         wifiTextView = (TextView)view.findViewById(R.id.WiFiTextViewID);
+        networkTextView = (TextView)view.findViewById(R.id.netwrokTextViewID);
     }
 
     @Override

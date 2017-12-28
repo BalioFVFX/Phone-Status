@@ -41,7 +41,17 @@
         android:layout_alignLeft="@+id/systemUpTimeTextView"
         android:layout_alignStart="@+id/systemUpTimeTextView"
         android:layout_below="@+id/systemUpTimeTextView"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="23dp"
         android:text="WiFi:" />
+
+    <TextView
+        android:id="@+id/netwrokTextViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/WiFiTextViewID"
+        android:layout_alignStart="@+id/WiFiTextViewID"
+        android:layout_below="@+id/WiFiTextViewID"
+        android:layout_marginTop="21dp"
+        android:text="Netwrok:" />
 
 </RelativeLayout>
