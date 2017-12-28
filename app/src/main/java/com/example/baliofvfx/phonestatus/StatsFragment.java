@@ -1,5 +1,6 @@
 package com.example.baliofvfx.phonestatus;
 
+import android.net.Network;
 import android.net.wifi.WifiInfo;
 import android.os.BatteryManager;
 import android.os.Build;
@@ -19,6 +20,8 @@ public class StatsFragment extends Fragment {
 
     private TextView androidVersionTextView;
     private TextView systemUpTimeTextView;
+    private TextView wifiTextView;
+    NetworkStatus networkStatus = new NetworkStatus();
 
     int secondsUpTime = 0;
     int minutesUpTime = 0;
@@ -32,6 +35,7 @@ public class StatsFragment extends Fragment {
         super.onStart();
         showUptime(systemUpTimeTextView);
         androidVersionTextView.setText("Android SDK: " + Build.VERSION.SDK_INT + " " + Build.VERSION.RELEASE);
+        networkStatus.showWiFiName(getContext(), wifiTextView);
     }
 
     @Override
@@ -39,6 +43,7 @@ public class StatsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         androidVersionTextView = (TextView)view.findViewById(R.id.androidVersionTextView);
         systemUpTimeTextView = (TextView)view.findViewById(R.id.systemUpTimeTextView);
+        wifiTextView = (TextView)view.findViewById(R.id.WiFiTextViewID);
     }
 
     @Override

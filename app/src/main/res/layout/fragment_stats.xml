@@ -34,4 +34,14 @@
         android:layout_marginTop="21dp"
         android:text="System uptime:" />
 
+    <TextView
+        android:id="@+id/WiFiTextViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/systemUpTimeTextView"
+        android:layout_alignStart="@+id/systemUpTimeTextView"
+        android:layout_below="@+id/systemUpTimeTextView"
+        android:layout_marginTop="11dp"
+        android:text="WiFi:" />
+
 </RelativeLayout>
