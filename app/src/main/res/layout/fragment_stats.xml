@@ -54,4 +54,14 @@
         android:layout_marginTop="21dp"
         android:text="Netwrok:" />
 
+    <TextView
+        android:id="@+id/networkTypeTextViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/netwrokTextViewID"
+        android:layout_alignStart="@+id/netwrokTextViewID"
+        android:layout_below="@+id/netwrokTextViewID"
+        android:layout_marginTop="18dp"
+        android:text="Network type:" />
+
 </RelativeLayout>

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 public class NetworkStatus {
 
+
     public void showWiFiName(Context context, TextView wifiTextView){
         WifiManager wifiMgr = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
@@ -26,14 +27,73 @@ public class NetworkStatus {
         }
     }
 
-    public void showNetwrokName(Context context, TextView networkTextView){
+    public void showNetwrokName(Context context, TextView networkTextView, TextView networkTypeTextView){
         TelephonyManager manager = (TelephonyManager)context.getSystemService(context.TELEPHONY_SERVICE);
         String networkName = manager.getNetworkOperatorName();
+
+        int networkType = manager.getNetworkType();
+
         if(networkName == ""){
             networkTextView.setText("Network: Not found");
         }
         else{
             networkTextView.setText("Network: " + networkName);
+        }
+
+        switch (networkType) {
+
+            //2G Network
+            case TelephonyManager.NETWORK_TYPE_GPRS:
+                networkTypeTextView.setText("Network Type: 2G GPRS");
+                break;
+            case TelephonyManager.NETWORK_TYPE_EDGE:
+                networkTypeTextView.setText("Network Type: 2G EDGE");
+                break;
+            case TelephonyManager.NETWORK_TYPE_CDMA:
+                networkTypeTextView.setText("Network Type: 2G CDMA");
+                break;
+            case TelephonyManager.NETWORK_TYPE_1xRTT:
+                networkTypeTextView.setText("Network Type: 2G 1xRTT");
+                break;
+            case TelephonyManager.NETWORK_TYPE_IDEN:
+                networkTypeTextView.setText("Network Type: 2G iDEN");
+                break;
+
+                //3G Network
+            case TelephonyManager.NETWORK_TYPE_UMTS:
+                networkTypeTextView.setText("Network Type: 3G UMTS");
+                break;
+            case TelephonyManager.NETWORK_TYPE_EVDO_0:
+                networkTypeTextView.setText("Network Type: 3G EVDO revision 0");
+                break;
+            case TelephonyManager.NETWORK_TYPE_EVDO_A:
+                networkTypeTextView.setText("Network Type: 3G EVDO revision A");
+                break;
+            case TelephonyManager.NETWORK_TYPE_HSDPA:
+                networkTypeTextView.setText("Network Type: 3G HSDPA");
+                break;
+            case TelephonyManager.NETWORK_TYPE_HSUPA:
+                networkTypeTextView.setText("Network Type: 3G HSUPA");
+                break;
+            case TelephonyManager.NETWORK_TYPE_HSPA:
+                networkTypeTextView.setText("Network Type: 3G HSPA");
+                break;
+            case TelephonyManager.NETWORK_TYPE_EVDO_B:
+                networkTypeTextView.setText("Network Type: 3G EVDO revision B");
+                break;
+            case TelephonyManager.NETWORK_TYPE_EHRPD:
+                networkTypeTextView.setText("Network Type: 3G eHRDP");
+                break;
+            case TelephonyManager.NETWORK_TYPE_HSPAP:
+                networkTypeTextView.setText("Network Type: 3G HSPA+");
+                break;
+                // 4G Network
+            case TelephonyManager.NETWORK_TYPE_LTE:
+                networkTypeTextView.setText("Network Type: 4G LTE");
+                break;
+            default:
+                networkTypeTextView.setText("Network Type: Unknown");
+                break;
         }
 
     }
