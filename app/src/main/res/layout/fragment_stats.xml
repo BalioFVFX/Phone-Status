@@ -64,4 +64,14 @@
         android:layout_marginTop="18dp"
         android:text="Network type:" />
 
+    <TextView
+        android:id="@+id/mobileDataTextViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/networkTypeTextViewID"
+        android:layout_alignStart="@+id/networkTypeTextViewID"
+        android:layout_below="@+id/networkTypeTextViewID"
+        android:layout_marginTop="19dp"
+        android:text="Mobile Data:" />
+
 </RelativeLayout>

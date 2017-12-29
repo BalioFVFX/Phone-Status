@@ -1,6 +1,5 @@
 package com.example.baliofvfx.phonestatus;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,8 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-import org.w3c.dom.Text;
-
 
 public class BatteryLevelFragment extends Fragment {
 
@@ -20,13 +17,17 @@ public class BatteryLevelFragment extends Fragment {
     private TextView batteryLevelTextView;
     private BatteryStatus batteryStatus = new BatteryStatus();
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
-
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         batteryLevelTextView = (TextView)view.findViewById(R.id.batteryLevelTextViewID);
+        RequestManager.sendPost(batteryStatus.batteryLevel(getContext()));
     }
 
     @Override

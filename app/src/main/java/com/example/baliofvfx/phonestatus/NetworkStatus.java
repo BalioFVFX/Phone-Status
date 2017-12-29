@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 public class NetworkStatus {
 
-
     public void showWiFiName(Context context, TextView wifiTextView){
         WifiManager wifiMgr = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
@@ -27,7 +26,7 @@ public class NetworkStatus {
         }
     }
 
-    public void showNetwrokName(Context context, TextView networkTextView, TextView networkTypeTextView){
+    public void showNetworkInfo(Context context, TextView networkTextView, TextView networkTypeTextView, TextView mobileDataTextView){
         TelephonyManager manager = (TelephonyManager)context.getSystemService(context.TELEPHONY_SERVICE);
         String networkName = manager.getNetworkOperatorName();
 
@@ -38,6 +37,19 @@ public class NetworkStatus {
         }
         else{
             networkTextView.setText("Network: " + networkName);
+        }
+
+
+        // Fix this!
+        switch (networkType){
+            case TelephonyManager.DATA_CONNECTED:
+                mobileDataTextView.setText("Mobile Data: Turned On");
+                break;
+            case TelephonyManager.DATA_DISCONNECTED:
+                mobileDataTextView.setText("Mobile Data: Turned Off");
+                break;
+            default:
+                mobileDataTextView.setText("Mobile Data: Not Found");
         }
 
         switch (networkType) {

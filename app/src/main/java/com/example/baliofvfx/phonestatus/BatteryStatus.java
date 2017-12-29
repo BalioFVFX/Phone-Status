@@ -30,6 +30,20 @@ public class BatteryStatus {
         batteryTextView.setText("Battery level: " + Float.toString(batteryLevel) + "%");
     }
 
+    public float batteryLevel(Context context){
+        IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = context.registerReceiver(null, ifilter);
+        int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+        int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+        float batteryLevel = (level / (float)scale) * 100;
+
+        System.out.println("Current battery level: " + batteryLevel);
+//        Toast.makeText(context
+//                , Float.toString(batteryLevel), Toast.LENGTH_LONG).show();
+
+        return batteryLevel;
+    }
+
     public void showBatteryTemperature(Context context, TextView batteryTemperatureTextView){
 
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
