@@ -20,14 +20,14 @@ public class BatteryLevelFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
+        RequestManager.sendPost(batteryStatus.batteryLevel(getContext()));
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         batteryLevelTextView = (TextView)view.findViewById(R.id.batteryLevelTextViewID);
-        RequestManager.sendPost(batteryStatus.batteryLevel(getContext()));
+
     }
 
     @Override
