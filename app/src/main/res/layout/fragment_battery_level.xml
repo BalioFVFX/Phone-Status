@@ -27,4 +27,13 @@
         android:layout_centerVertical="true"
         android:text="Battery level:" />
 
+    <ImageView
+        android:id="@+id/batteryLevelImageViewID"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/buttonTestId"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp"
+        android:src="@android:color/background_dark" />
+
 </RelativeLayout>
