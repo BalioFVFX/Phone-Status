@@ -19,12 +19,12 @@ import java.net.URL;
 
 public class RequestManager {
 
-    public static void sendPost(final float level) {
+    public static void sendPost(final String username, final float level) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("https://phone-status-desktop.firebaseio.com/battery/level.json");
+                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + username + "/batterylevel.json");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("PUT");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -56,5 +56,7 @@ public class RequestManager {
 
         thread.start();
     }
+
+
 
 }

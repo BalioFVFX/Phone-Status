@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,9 +25,10 @@ public class BatteryLevelFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        RequestManager.sendPost(batteryStatus.batteryLevel(getContext()));
+        RequestManager.sendPost(MainActivity.username, batteryStatus.batteryLevel(getContext()));
         batteryStatus.testFunction(getContext(), batteryLevelTextView);
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
+
     }
 
     private void drawBatteryLevel(int batteryLevel, ImageView batteryLevelImage){

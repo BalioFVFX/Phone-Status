@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    public static String username = "baliofvfx";
     BatteryLevelFragment batteryLevelFragment = new BatteryLevelFragment();
     TemperaturesFragment temperaturesFragment = new TemperaturesFragment();
     StatsFragment statsFragment = new StatsFragment();
