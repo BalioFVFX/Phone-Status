@@ -44,6 +44,16 @@ public class BatteryStatus {
         return batteryLevel;
     }
 
+    public float getBatteryTemp(Context context){
+        IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryStatus = context.registerReceiver(null, ifilter);
+
+        float batteryTemp = ((float) batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0) / 10);
+
+        return batteryTemp;
+
+    }
+
     public void showBatteryTemperature(Context context, TextView batteryTemperatureTextView){
 
         IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);

@@ -1,5 +1,6 @@
 package com.example.baliofvfx.phonestatus;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class TemperaturesFragment extends Fragment {
     public void onStart() {
         super.onStart();
         batteryStatus.showBatteryTemperature(getContext(), batteryLevelTextView);
+        RequestManager.sendTemperatures(MainActivity.username, batteryStatus.getBatteryTemp(getContext()));
     }
 
     @Override
