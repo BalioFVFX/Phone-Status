@@ -27,6 +27,7 @@ public class BatteryLevelFragment extends Fragment {
     public void onStart() {
         super.onStart();
         RequestManager.sendPost(batteryStatus.batteryLevel(getContext()));
+        batteryStatus.testFunction(getContext(), batteryLevelTextView);
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
     }
 
@@ -55,14 +56,6 @@ public class BatteryLevelFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_battery_level, container, false);
         batteryLevelImage = (ImageView)view.findViewById(R.id.batteryLevelImageViewID);
-
-
-        final Button button = view.findViewById(R.id.buttonTestId);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                batteryStatus.testFunction(getContext(), batteryLevelTextView);
-            }
-        });
 
         return view;
     }

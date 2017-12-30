@@ -7,18 +7,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <Button
-        android:id="@+id/buttonTestId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/batteryLevelTextViewID"
-        android:layout_marginLeft="70dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="37dp"
-        android:text="Show Battery Percentage" />
-
     <TextView
         android:id="@+id/batteryLevelTextViewID"
         android:layout_width="wrap_content"
@@ -31,9 +19,9 @@
         android:id="@+id/batteryLevelImageViewID"
         android:layout_width="120dp"
         android:layout_height="150dp"
-        android:layout_above="@+id/buttonTestId"
+        android:layout_above="@+id/batteryLevelTextViewID"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="21dp"
+        android:layout_marginBottom="40dp"
         android:src="@android:color/background_dark" />
 
 </RelativeLayout>
