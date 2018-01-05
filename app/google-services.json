@@ -1,72 +1,35 @@
 {
   "project_info": {
-    "project_number": "499961155207",
-    "project_id": "phone-status"
+    "project_number": "404407908944",
+    "firebase_url": "https://phone-status-desktop.firebaseio.com",
+    "project_id": "phone-status-desktop",
+    "storage_bucket": "phone-status-desktop.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:499961155207:android:27d689d63f1b7a06",
-        "android_client_info": {
-          "package_name": "com.google.samples.quickstart.signin"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "499961155207-o193rbhk18gur33952hvrt1r3gjremv9.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "499961155207-nis8a6f1lctfnlm3btnqk89eld1cgck8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.google.samples.quickstart.signin",
-            "certificate_hash": "8246be745fb9bb00b207e1412799ba73062b07d5"
-          }
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBm4zmY2t-TR95AUMG__a2l9_R6T1SYDaU"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 1
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:499961155207:android:f951fbd733253fb9",
+        "mobilesdk_app_id": "1:404407908944:android:f951fbd733253fb9",
         "android_client_info": {
           "package_name": "com.example.baliofvfx.phonestatus"
         }
       },
       "oauth_client": [
         {
-          "client_id": "499961155207-b78veof6lv0ksh7u9ebikqi9brg720rh.apps.googleusercontent.com",
+          "client_id": "404407908944-v7bjpifdvcufl62r27r4kd390n0fc22h.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.baliofvfx.phonestatus",
-            "certificate_hash": "8246be745fb9bb00b207e1412799ba73062b07d5"
+            "certificate_hash": "bb2c7e6fc5b18714aa0d841997d79752724977f5"
           }
         },
         {
-          "client_id": "499961155207-o193rbhk18gur33952hvrt1r3gjremv9.apps.googleusercontent.com",
+          "client_id": "404407908944-ijb97q80piu5cp644mq8g6d35it3n6s4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBm4zmY2t-TR95AUMG__a2l9_R6T1SYDaU"
+          "current_key": "AIzaSyAS7vQ3MdLAhNgCcLz0RrpjXslChcIN1ow"
         }
       ],
       "services": {
@@ -74,11 +37,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404407908944-ijb97q80piu5cp644mq8g6d35it3n6s4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }
