@@ -1,14 +1,16 @@
 package com.example.baliofvfx.phonestatus;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    public static String email = "vfxbaliof.com";
+    public static String email = "BalioFVFX";
     BatteryLevelFragment batteryLevelFragment = new BatteryLevelFragment();
     TemperaturesFragment temperaturesFragment = new TemperaturesFragment();
     StatsFragment statsFragment = new StatsFragment();
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.MainActivityId,batteryLevelFragment).commit();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        Intent intent = new Intent(this, BatteryStatus.class);
+        startService(intent);
 
 
     }

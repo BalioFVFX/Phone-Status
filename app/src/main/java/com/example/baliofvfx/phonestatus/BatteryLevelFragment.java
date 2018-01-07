@@ -1,5 +1,6 @@
 package com.example.baliofvfx.phonestatus;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -56,7 +57,6 @@ public class BatteryLevelFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_battery_level, container, false);
         batteryLevelImage = (ImageView)view.findViewById(R.id.batteryLevelImageViewID);
-
         return view;
     }
 
