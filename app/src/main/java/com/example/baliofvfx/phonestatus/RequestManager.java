@@ -63,7 +63,7 @@ public class RequestManager {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + username + "/batterytemp.json");
+                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + username + "/batterytstatus.json");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("PUT");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
