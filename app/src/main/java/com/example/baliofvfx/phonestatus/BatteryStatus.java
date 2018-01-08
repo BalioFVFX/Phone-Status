@@ -43,7 +43,16 @@ public class BatteryStatus extends Service {
 
             float batteryTemp = ((float) intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0) / 10);
 
-            RequestManager.sendBatteryStats(MainActivity.email, batteryTemp, batteryLevel);
+            int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+            boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
+                    status == BatteryManager.BATTERY_STATUS_FULL;
+
+            // How are we charging?
+            int chargePlug = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
+            boolean usbCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_USB;
+            boolean acCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_AC;
+
+            RequestManager.sendBatteryStats(MainActivity.email, batteryTemp, batteryLevel, isCharging, usbCharge, acCharge);
 
         }
     };

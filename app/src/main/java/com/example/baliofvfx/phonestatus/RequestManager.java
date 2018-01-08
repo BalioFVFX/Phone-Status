@@ -19,7 +19,7 @@ import java.net.URL;
 
 public class RequestManager {
 
-    public static void sendBatteryStats(final String username, final float batteryTemp, final float batteryLevel){
+    public static void sendBatteryStats(final String username, final float batteryTemp, final float batteryLevel, final boolean isCharging, final boolean usbCharge, final boolean acCharge ){
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -35,7 +35,9 @@ public class RequestManager {
                     JSONObject jsonParam = new JSONObject();
                     jsonParam.put("temperature", batteryTemp);
                     jsonParam.put("level", batteryLevel);
-
+                    jsonParam.put("isCharging", isCharging);
+                    jsonParam.put("usbCharge", usbCharge);
+                    jsonParam.put("acCharge", acCharge);
 
                     Log.i("JSON", jsonParam.toString());
                     DataOutputStream os = new DataOutputStream(conn.getOutputStream());
