@@ -26,9 +26,8 @@ public class BatteryLevelFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        RequestManager.sendPost(MainActivity.email, batteryStatus.batteryLevel(getContext()));
-        batteryStatus.testFunction(getContext(), batteryLevelTextView);
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
+        batteryLevelTextView.setText("Battery Level: " + batteryStatus.batteryLevel(getContext()));
 
     }
 

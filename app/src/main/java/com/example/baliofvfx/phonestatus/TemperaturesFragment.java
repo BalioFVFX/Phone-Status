@@ -20,7 +20,6 @@ public class TemperaturesFragment extends Fragment {
     public void onStart() {
         super.onStart();
         batteryStatus.showBatteryTemperature(getContext(), batteryLevelTextView);
-        RequestManager.sendTemperatures(MainActivity.email, batteryStatus.getBatteryTemp(getContext()));
     }
 
     @Override
