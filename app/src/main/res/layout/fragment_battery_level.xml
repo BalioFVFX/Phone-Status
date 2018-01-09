@@ -24,4 +24,26 @@
         android:layout_marginBottom="40dp"
         android:src="@android:color/background_dark" />
 
+    <ToggleButton
+        android:id="@+id/monitoringToggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/batteryLevelTextViewID"
+        android:layout_marginTop="66dp"
+        android:layout_toEndOf="@+id/batteryLevelTextViewID"
+        android:layout_toRightOf="@+id/batteryLevelTextViewID"
+        android:text="ToggleButton" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/monitoringToggleButton"
+        android:layout_alignBottom="@+id/monitoringToggleButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Enable desktop monitoring" />
+
 </RelativeLayout>
