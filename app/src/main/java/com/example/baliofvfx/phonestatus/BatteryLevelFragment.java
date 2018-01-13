@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.net.Network;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,7 +33,7 @@ public class BatteryLevelFragment extends Fragment {
         super.onStart();
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
         batteryLevelTextView.setText("Battery Level: " + batteryStatus.batteryLevel(getContext()));
-        if(isMyServiceRunning(BatteryStatus.class) == true){
+        if(isMyServiceRunning(BatteryStatus.class) == true && isMyServiceRunning(NetworkStatus.class)){
             desktopMonitoringToggleButton.setChecked(true);
         }
         else{
@@ -78,6 +79,7 @@ public class BatteryLevelFragment extends Fragment {
 
 
         final Intent BatteryStatusIntent = new Intent(getContext(), BatteryStatus.class);
+        final Intent WiFiIntent = new Intent(getContext(), NetworkStatus.class);
 
         System.out.println(isMyServiceRunning(BatteryStatus.class));
 
@@ -94,10 +96,16 @@ public class BatteryLevelFragment extends Fragment {
                 if(isChecked){
                     getActivity().startService(BatteryStatusIntent);
                     System.out.println("Click! Battery Status isServiceRunning: " + isMyServiceRunning(BatteryStatus.class));
+
+                    getActivity().startService(WiFiIntent);
+                    System.out.println("Click! WiFi Status isServiceRunning: " + isMyServiceRunning(NetworkStatus.class));
                 }
                 else{
                     getActivity().stopService(BatteryStatusIntent);
                     System.out.println("Click! Battery Status isServiceRunning: " + isMyServiceRunning(BatteryStatus.class));
+
+                    getActivity().stopService(WiFiIntent);
+                    System.out.println("Click! WiFi Status isServiceRunning: " + isMyServiceRunning(NetworkStatus.class));
                 }
             }
         });

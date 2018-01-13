@@ -1,14 +1,12 @@
 package com.example.baliofvfx.phonestatus;
 
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.wifi.WifiManager;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Toast;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
     BatteryLevelFragment batteryLevelFragment = new BatteryLevelFragment();
     TemperaturesFragment temperaturesFragment = new TemperaturesFragment();
     StatsFragment statsFragment = new StatsFragment();
-
-    IntentFilter WiFiintentFilter = new IntentFilter();
 
 
 
@@ -50,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.MainActivityId,batteryLevelFragment).commit();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        Intent WiFiIntent = new Intent(this, NetworkStatus.class);
-        startService(WiFiIntent);
     }
 
 }
