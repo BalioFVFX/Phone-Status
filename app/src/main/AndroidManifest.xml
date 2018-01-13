@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service android:name=".BatteryStatus" />
+        <service android:name=".NetworkStatus" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

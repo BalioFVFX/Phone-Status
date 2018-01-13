@@ -77,22 +77,27 @@ public class BatteryLevelFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_battery_level, container, false);
 
 
-        final Intent intent = new Intent(getContext(), BatteryStatus.class);
+        final Intent BatteryStatusIntent = new Intent(getContext(), BatteryStatus.class);
+
         System.out.println(isMyServiceRunning(BatteryStatus.class));
 
 
+
         batteryLevelImage = (ImageView)view.findViewById(R.id.batteryLevelImageViewID);
+
+
         desktopMonitoringToggleButton = (ToggleButton)view.findViewById(R.id.monitoringToggleButton);
+
         desktopMonitoringToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    getActivity().startService(intent);
-                    System.out.println(isMyServiceRunning(BatteryStatus.class));
+                    getActivity().startService(BatteryStatusIntent);
+                    System.out.println("Click! Battery Status isServiceRunning: " + isMyServiceRunning(BatteryStatus.class));
                 }
                 else{
-                    getActivity().stopService(intent);
-                    System.out.println(isMyServiceRunning(BatteryStatus.class));
+                    getActivity().stopService(BatteryStatusIntent);
+                    System.out.println("Click! Battery Status isServiceRunning: " + isMyServiceRunning(BatteryStatus.class));
                 }
             }
         });
