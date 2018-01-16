@@ -29,6 +29,7 @@ public class BatteryLevelFragment extends Fragment {
     private BatteryStatus batteryStatus = new BatteryStatus();
     private ImageView batteryLevelImage;
     private ToggleButton desktopMonitoringToggleButton;
+    private TextView currentUserTextView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class BatteryLevelFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        currentUserTextView.setText("Username: " + MainActivity.currentUsername);
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
         batteryLevelTextView.setText("Battery Level: " + batteryStatus.batteryLevel(getContext()));
         if(isMyServiceRunning(BatteryStatus.class) == true && isMyServiceRunning(NetworkStatus.class)){
@@ -95,7 +97,7 @@ public class BatteryLevelFragment extends Fragment {
 
         batteryLevelImage = (ImageView)view.findViewById(R.id.batteryLevelImageViewID);
 
-
+        currentUserTextView = (TextView)view.findViewById(R.id.usernameTextView);
         desktopMonitoringToggleButton = (ToggleButton)view.findViewById(R.id.monitoringToggleButton);
 
         desktopMonitoringToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

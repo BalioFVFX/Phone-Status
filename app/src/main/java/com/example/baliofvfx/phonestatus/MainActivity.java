@@ -11,6 +11,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     public static String email = "BalioFVFX";
+    public static String currentUsername = "";
     BatteryLevelFragment batteryLevelFragment = new BatteryLevelFragment();
     TemperaturesFragment temperaturesFragment = new TemperaturesFragment();
     StatsFragment statsFragment = new StatsFragment();
