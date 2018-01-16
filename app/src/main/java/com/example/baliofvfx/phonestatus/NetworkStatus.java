@@ -1,6 +1,5 @@
 package com.example.baliofvfx.phonestatus;
 
-import android.app.DownloadManager;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,7 +12,6 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.telephony.TelephonyManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by BalioFVFX on 12/28/2017.

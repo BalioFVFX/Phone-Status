@@ -1,8 +1,6 @@
 package com.example.baliofvfx.phonestatus;
 
-import android.net.Network;
-import android.net.wifi.WifiInfo;
-import android.os.BatteryManager;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -12,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 public class StatsFragment extends Fragment {

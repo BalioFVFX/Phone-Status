@@ -11,7 +11,7 @@ import android.os.BatteryManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 /**
  * Created by BalioFVFX on 12/17/2017.

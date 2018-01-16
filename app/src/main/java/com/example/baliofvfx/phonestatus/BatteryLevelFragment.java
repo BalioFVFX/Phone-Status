@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.net.Network;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,7 +16,10 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import android.widget.ToggleButton;
+
+
 
 
 public class BatteryLevelFragment extends Fragment {
@@ -27,6 +29,12 @@ public class BatteryLevelFragment extends Fragment {
     private BatteryStatus batteryStatus = new BatteryStatus();
     private ImageView batteryLevelImage;
     private ToggleButton desktopMonitoringToggleButton;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public void onStart() {

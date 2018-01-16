@@ -1,16 +1,10 @@
 package com.example.baliofvfx.phonestatus;
 
-import android.os.StrictMode;
+
 import android.util.Log;
-
-import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 /**

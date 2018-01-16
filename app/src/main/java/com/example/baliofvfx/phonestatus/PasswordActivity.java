@@ -17,6 +17,7 @@ public class PasswordActivity extends AppCompatActivity {
             RequestManager.sendPassword(MainActivity.email, passwordEditText.getText().toString());
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
         else{
             Toast.makeText(this, "Please enter valid password", Toast.LENGTH_SHORT).show();
