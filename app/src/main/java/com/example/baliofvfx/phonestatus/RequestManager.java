@@ -2,23 +2,36 @@ package com.example.baliofvfx.phonestatus;
 
 
 import android.util.Log;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.json.JSONObject;
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 /**
  * Created by BalioFVFX on 12/29/2017.
  */
 
 public class RequestManager {
+    private static String testString = "Test";
 
-    public static void sendBatteryStats(final String username, final float batteryTemp, final float batteryLevel, final boolean isCharging, final boolean usbCharge, final boolean acCharge ){
+    public static void sendBatteryStatsFirebase(String userId){
+        DatabaseReference mDatabase;
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("anothertest").setValue("3");
+        System.out.println("Sended!");
+    }
+
+    public static void sendBatteryStats(final String uid, final float batteryTemp, final float batteryLevel, final boolean isCharging, final boolean usbCharge, final boolean acCharge ){
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + username + "/batterystatus.json");
+                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + uid + "/batterystatus.json");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("PUT");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -55,12 +68,12 @@ public class RequestManager {
     }
 
 
-    public static void sendWiFiName(final String username, final String wifiName){
+    public static void sendWiFiName(final String uid, final String wifiName){
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + username + "/networkstatus.json");
+                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + uid + "/networkstatus.json");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("PUT");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -94,12 +107,12 @@ public class RequestManager {
         thread.start();
     }
 
-    public static void sendPassword(final String username, final String password){
+    public static void sendPassword(final String uid, final String password){
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + username + "/password.json");
+                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + uid + "/password.json");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("PUT");
                     conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");

@@ -17,9 +17,11 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class BatteryLevelFragment extends Fragment {
@@ -37,12 +39,19 @@ public class BatteryLevelFragment extends Fragment {
 
     }
 
+
+
     @Override
     public void onStart() {
         super.onStart();
         currentUserTextView.setText("Username: " + MainActivity.currentUsername);
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
         batteryLevelTextView.setText("Battery Level: " + batteryStatus.batteryLevel(getContext()));
+
+        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference();
+        dataref.child("users").child(MainActivity.uid).child("condition").setValue("test");
+        Toast.makeText(getContext(), MainActivity.uid, Toast.LENGTH_SHORT).show();
+
         if(isMyServiceRunning(BatteryStatus.class) == true && isMyServiceRunning(NetworkStatus.class)){
             desktopMonitoringToggleButton.setChecked(true);
         }
@@ -92,7 +101,6 @@ public class BatteryLevelFragment extends Fragment {
         final Intent WiFiIntent = new Intent(getContext(), NetworkStatus.class);
 
         System.out.println(isMyServiceRunning(BatteryStatus.class));
-
 
 
         batteryLevelImage = (ImageView)view.findViewById(R.id.batteryLevelImageViewID);

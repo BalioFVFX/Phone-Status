@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String email = "BalioFVFX";
+    public static String uid = "";
     public static String currentUsername = "";
     BatteryLevelFragment batteryLevelFragment = new BatteryLevelFragment();
     TemperaturesFragment temperaturesFragment = new TemperaturesFragment();
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.MainActivityId,batteryLevelFragment).commit();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
 
     }
 

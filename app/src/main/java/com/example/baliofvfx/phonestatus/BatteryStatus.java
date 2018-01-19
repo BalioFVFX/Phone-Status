@@ -52,7 +52,7 @@ public class BatteryStatus extends Service {
             boolean usbCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_USB;
             boolean acCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_AC;
 
-            RequestManager.sendBatteryStats(MainActivity.email, batteryTemp, batteryLevel, isCharging, usbCharge, acCharge);
+            RequestManager.sendBatteryStats(MainActivity.uid, batteryTemp, batteryLevel, isCharging, usbCharge, acCharge);
 
         }
     };
