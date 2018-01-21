@@ -3,6 +3,7 @@
     <string name="title_home">Battery Level</string>
     <string name="title_dashboard">Temperatures</string>
     <string name="title_notifications">Stats</string>
+    <string name="signout_menu">Sign-out</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

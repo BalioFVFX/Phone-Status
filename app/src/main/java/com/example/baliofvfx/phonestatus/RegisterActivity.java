@@ -36,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        System.out.println("Register Activity: Current User: " + currentUser);
         if(currentUser != null){
             Toast.makeText(this,  currentUser.getEmail(), Toast.LENGTH_SHORT).show();
             MainActivity.uid = currentUser.getUid();
