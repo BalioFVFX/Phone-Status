@@ -36,7 +36,9 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser.getUid() != null){
+        if(currentUser != null){
+            Toast.makeText(this,  currentUser.getEmail(), Toast.LENGTH_SHORT).show();
+            MainActivity.uid = currentUser.getUid();
             System.out.println(currentUser.getUid());
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
@@ -58,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            MainActivity.uid = user.getUid();
                             Intent intent = new Intent(getBaseContext(), MainActivity.class);
                             startActivity(intent);
                             finish();

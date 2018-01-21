@@ -47,7 +47,7 @@ public class NetworkStatus extends Service {
                     new java.util.TimerTask() {
                         @Override
                         public void run() {
-                            RequestManager.sendWiFiName(MainActivity.uid, wifiName);
+                            RequestManager.sendWiFi(MainActivity.uid, wifiName);
                         }
                     },
                     5000

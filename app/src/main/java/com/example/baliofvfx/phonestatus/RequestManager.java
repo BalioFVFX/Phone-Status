@@ -17,132 +17,25 @@ import java.util.Map;
  */
 
 public class RequestManager {
-    private static String testString = "Test";
 
-    public static void sendBatteryStatsFirebase(String userId){
-        DatabaseReference mDatabase;
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("anothertest").setValue("3");
-        System.out.println("Sended!");
-    }
+    public static void sendBatteryStatus(String uid, float batteryTemp, float batteryLevel, boolean isCharging, boolean usbCharge, boolean acCharge){
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
-    public static void sendBatteryStats(final String uid, final float batteryTemp, final float batteryLevel, final boolean isCharging, final boolean usbCharge, final boolean acCharge ){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + uid + "/batterystatus.json");
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("PUT");
-                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                    conn.setRequestProperty("Accept","application/json");
-                    conn.setDoOutput(true);
-                    conn.setDoInput(true);
+        Battery battery = new Battery(batteryTemp, batteryLevel, isCharging, usbCharge, acCharge);
 
-                    JSONObject jsonParam = new JSONObject();
-                    jsonParam.put("temperature", batteryTemp);
-                    jsonParam.put("level", batteryLevel);
-                    jsonParam.put("isCharging", isCharging);
-                    jsonParam.put("usbCharge", usbCharge);
-                    jsonParam.put("acCharge", acCharge);
-
-                    Log.i("JSON", jsonParam.toString());
-                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
-                    //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
-                    os.writeBytes(jsonParam.toString());
-
-                    os.flush();
-                    os.close();
-
-                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
-                    Log.i("MSG" , conn.getResponseMessage());
-
-                    conn.disconnect();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
+        databaseReference.child("users").child(uid).child("batterystatus").setValue(battery);
     }
 
 
-    public static void sendWiFiName(final String uid, final String wifiName){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + uid + "/networkstatus.json");
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("PUT");
-                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                    conn.setRequestProperty("Accept","application/json");
-                    conn.setDoOutput(true);
-                    conn.setDoInput(true);
+    public static void sendWiFi(String uid, String wifiName){
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
-                    JSONObject jsonParam = new JSONObject();
-                    jsonParam.put("wifiName", wifiName);
+        MyNetwork myNetwork = new MyNetwork(wifiName);
 
-
-                    Log.i("JSON", jsonParam.toString());
-                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
-                    //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
-                    os.writeBytes(jsonParam.toString());
-
-                    os.flush();
-                    os.close();
-
-                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
-                    Log.i("MSG" , conn.getResponseMessage());
-
-
-                    conn.disconnect();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
+        databaseReference.child("users").child(uid).child("networkstatus").setValue(myNetwork);
     }
 
-    public static void sendPassword(final String uid, final String password){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL("https://phone-status-desktop.firebaseio.com/users/" + uid + "/password.json");
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("PUT");
-                    conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-                    conn.setRequestProperty("Accept","application/json");
-                    conn.setDoOutput(true);
-                    conn.setDoInput(true);
-
-                    JSONObject jsonParam = new JSONObject();
-                    jsonParam.put("pass", password);
-
-
-                    Log.i("JSON", jsonParam.toString());
-                    DataOutputStream os = new DataOutputStream(conn.getOutputStream());
-                    //os.writeBytes(URLEncoder.encode(jsonParam.toString(), "UTF-8"));
-                    os.writeBytes(jsonParam.toString());
-
-                    os.flush();
-                    os.close();
-
-                    Log.i("STATUS", String.valueOf(conn.getResponseCode()));
-                    Log.i("MSG" , conn.getResponseMessage());
-
-                    conn.disconnect();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
-    }
 
 }

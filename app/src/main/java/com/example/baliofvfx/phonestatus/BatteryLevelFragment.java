@@ -48,8 +48,8 @@ public class BatteryLevelFragment extends Fragment {
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
         batteryLevelTextView.setText("Battery Level: " + batteryStatus.batteryLevel(getContext()));
 
-        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference();
-        dataref.child("users").child(MainActivity.uid).child("condition").setValue("test");
+//        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference();
+//        dataref.child("users").child(MainActivity.uid).child("condition").setValue("test2");
         Toast.makeText(getContext(), MainActivity.uid, Toast.LENGTH_SHORT).show();
 
         if(isMyServiceRunning(BatteryStatus.class) == true && isMyServiceRunning(NetworkStatus.class)){
