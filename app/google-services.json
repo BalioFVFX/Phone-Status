@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "404407908944-l88o23s9cje90fup3u4itjobfg9ffgp4.apps.googleusercontent.com",
+          "client_id": "404407908944-v7bjpifdvcufl62r27r4kd390n0fc22h.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.baliofvfx.phonestatus",
-            "certificate_hash": "8246be745fb9bb00b207e1412799ba73062b07d5"
+            "certificate_hash": "bb2c7e6fc5b18714aa0d841997d79752724977f5"
           }
         },
         {
