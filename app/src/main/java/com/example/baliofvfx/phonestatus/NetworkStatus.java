@@ -24,7 +24,7 @@ public class NetworkStatus extends Service {
         WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
         String name = wifiInfo.getSSID();
 
-        if(name == "<unknown ssid>"){
+        if(name == "<unknown ssid>" || name == "0x"){
             wifiTextView.setText("WiFi: Not connected");
         }
         else{
@@ -68,22 +68,7 @@ public class NetworkStatus extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    public String getWiFiName(Context context){
-        WifiManager wifiMgr = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
-        String wifiName = wifiInfo.getSSID().toString();
-
-        if(wifiName == "<unknown ssid>"){
-            return "WiFi: Not connected";
-        }
-        else{
-            return"WiFi: " + wifiName;
-        }
-    }
-
-
-
-
+    
 
     public void showNetworkInfo(Context context, TextView networkTextView){
         TelephonyManager manager = (TelephonyManager)context.getSystemService(context.TELEPHONY_SERVICE);
