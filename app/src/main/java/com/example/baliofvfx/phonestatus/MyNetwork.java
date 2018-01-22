@@ -6,7 +6,7 @@ package com.example.baliofvfx.phonestatus;
 
 public class MyNetwork {
 
-    String wifiName;
+    public String wifiName;
 
     public MyNetwork(){
 

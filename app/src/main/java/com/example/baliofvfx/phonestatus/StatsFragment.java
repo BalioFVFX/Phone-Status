@@ -35,6 +35,7 @@ public class StatsFragment extends Fragment {
         showUptime(systemUpTimeTextView);
         androidVersionTextView.setText("Android SDK: " + Build.VERSION.SDK_INT + " " + Build.VERSION.RELEASE);
         networkStatus.showWiFiName(getContext(), wifiTextView);
+        networkStatus.showNetworkInfo(getContext(), networkTextView);
     }
 
     @Override

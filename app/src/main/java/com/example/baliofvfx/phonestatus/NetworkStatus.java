@@ -71,7 +71,7 @@ public class NetworkStatus extends Service {
     public String getWiFiName(Context context){
         WifiManager wifiMgr = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
-        String wifiName = wifiInfo.getSSID();
+        String wifiName = wifiInfo.getSSID().toString();
 
         if(wifiName == "<unknown ssid>"){
             return "WiFi: Not connected";
@@ -85,7 +85,7 @@ public class NetworkStatus extends Service {
 
 
 
-    public void showNetworkInfo(Context context, TextView networkTextView, TextView mobileDataTextView){
+    public void showNetworkInfo(Context context, TextView networkTextView){
         TelephonyManager manager = (TelephonyManager)context.getSystemService(context.TELEPHONY_SERVICE);
         String networkName = manager.getNetworkOperatorName();
 
@@ -98,19 +98,6 @@ public class NetworkStatus extends Service {
             networkTextView.setText("Network: " + networkName);
         }
 
-
-
-        // Fix this!
-        switch (networkType){
-            case TelephonyManager.DATA_CONNECTED:
-                mobileDataTextView.setText("Mobile Data: Turned On");
-                break;
-            case TelephonyManager.DATA_DISCONNECTED:
-                mobileDataTextView.setText("Mobile Data: Turned Off");
-                break;
-            default:
-                mobileDataTextView.setText("Mobile Data: Not Found");
-        }
 
     }
 
