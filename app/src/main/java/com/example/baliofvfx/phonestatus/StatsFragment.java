@@ -3,6 +3,8 @@ package com.example.baliofvfx.phonestatus;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,11 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class StatsFragment extends Fragment {
 
+    Timer t = new Timer();
 
     private TextView androidVersionTextView;
     private TextView systemUpTimeTextView;
@@ -28,6 +34,8 @@ public class StatsFragment extends Fragment {
     int daysUpTime = 0;
 
     String uptimeArray[] = new String[4];
+
+
 
     @Override
     public void onStart() {
@@ -55,15 +63,41 @@ public class StatsFragment extends Fragment {
     }
 
 
-    private void showUptime(TextView textview){
-        secondsUpTime = (int)(SystemClock.elapsedRealtime() / ((1000)) % 60);
-        minutesUpTime = (int)(SystemClock.elapsedRealtime() / ((1000 * 60)) % 60);
-        hoursUpTime = (int)(SystemClock.elapsedRealtime() / ((1000 * 60 * 60)) % 24);
-        daysUpTime = (int)(SystemClock.elapsedRealtime() / (1000*60*60*24));
+    private void showUptime(final TextView textview){
+        this.t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                secondsUpTime = (int)(SystemClock.elapsedRealtime() / ((1000)) % 60);
+                minutesUpTime = (int)(SystemClock.elapsedRealtime() / ((1000 * 60)) % 60);
+                hoursUpTime = (int)(SystemClock.elapsedRealtime() / ((1000 * 60 * 60)) % 24);
+                daysUpTime = (int)(SystemClock.elapsedRealtime() / (1000*60*60*24));
 
 
-        hoursToString(daysUpTime, hoursUpTime, minutesUpTime, secondsUpTime); // Formats the uptime array[]
-        textview.setText("System uptime: " +  uptimeArray[0] + ":" + uptimeArray[1] + ":" + uptimeArray[2] + ":" + uptimeArray[3]);
+                hoursToString(daysUpTime, hoursUpTime, minutesUpTime, secondsUpTime); // Formats the uptime array[]
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("Running runnable");
+                        Toast.makeText(getContext(), "Runnable running", Toast.LENGTH_SHORT).show();
+                        textview.setText("System uptime: " + uptimeArray[0] + ":" + uptimeArray[1] + ":" + uptimeArray[2] + ":" + uptimeArray[3]);
+                    }
+                });
+
+            }
+        }, 0, 1000);
+
+
+
+
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        t.cancel();
     }
 
     private void hoursToString(int days, int hours, int minutes, int seconds){
