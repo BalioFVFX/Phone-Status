@@ -14,8 +14,7 @@ import android.support.annotation.Nullable;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
 
 
 /**
@@ -59,13 +58,6 @@ public class BatteryStatus extends Service {
             boolean usbCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_USB;
             boolean acCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_AC;
 
-            DatabaseReference databaseReference;
-            databaseReference = FirebaseDatabase.getInstance().getReference();
-
-            final Battery battery = new Battery(batteryTemp, batteryLevel, isCharging, usbCharge, acCharge);
-
-
-            databaseReference.child("users").child(MainActivity.uid).child("batterystatus").setValue(battery);
 
             RequestManager.updateBatteryLevel(batteryLevel, batteryTemp, isCharging, usbCharge, acCharge);
 
