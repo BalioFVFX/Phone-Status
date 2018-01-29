@@ -14,6 +14,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GetTokenResult;
+import com.google.firebase.auth.GoogleAuthCredential;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -37,6 +40,11 @@ public class RegisterActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         System.out.println("Register Activity: Current User: " + currentUser);
+
+
+
+
+
         if(currentUser != null){
             Toast.makeText(this,  currentUser.getEmail(), Toast.LENGTH_SHORT).show();
             MainActivity.uid = currentUser.getUid();
@@ -59,9 +67,11 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             MainActivity.uid = user.getUid();
+                            RequestManager.initCollectionForUser(user.getUid()); // Init the user to the database
                             Intent intent = new Intent(getBaseContext(), MainActivity.class);
                             startActivity(intent);
                             finish();

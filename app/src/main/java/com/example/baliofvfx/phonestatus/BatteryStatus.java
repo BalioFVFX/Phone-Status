@@ -2,6 +2,7 @@ package com.example.baliofvfx.phonestatus;
 
 
 import android.app.DownloadManager;
+import android.app.IntentService;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,6 +12,10 @@ import android.os.BatteryManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 /**
@@ -20,6 +25,9 @@ import android.widget.TextView;
 public class BatteryStatus extends Service {
 
 
+
+
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -27,11 +35,10 @@ public class BatteryStatus extends Service {
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
         registerReceiver(this.batteryInfoReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         return super.onStartCommand(intent, flags, startId);
     }
-
 
     private final BroadcastReceiver batteryInfoReceiver = new BroadcastReceiver(){
         @Override
@@ -52,7 +59,15 @@ public class BatteryStatus extends Service {
             boolean usbCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_USB;
             boolean acCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_AC;
 
-          RequestManager.sendBatteryStatus(MainActivity.uid, batteryLevel, batteryTemp, isCharging, usbCharge, acCharge);
+            DatabaseReference databaseReference;
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+
+            final Battery battery = new Battery(batteryTemp, batteryLevel, isCharging, usbCharge, acCharge);
+
+
+            databaseReference.child("users").child(MainActivity.uid).child("batterystatus").setValue(battery);
+
+            RequestManager.updateBatteryLevel(batteryLevel, batteryTemp, isCharging, usbCharge, acCharge);
 
         }
     };

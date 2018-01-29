@@ -47,7 +47,7 @@ public class NetworkStatus extends Service {
                     new java.util.TimerTask() {
                         @Override
                         public void run() {
-                            RequestManager.sendWiFi(MainActivity.uid, wifiName);
+                            //RequestManager.sendWiFi(MainActivity.uid, wifiName);
                         }
                     },
                     5000
@@ -68,7 +68,7 @@ public class NetworkStatus extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-    
+
 
     public void showNetworkInfo(Context context, TextView networkTextView){
         TelephonyManager manager = (TelephonyManager)context.getSystemService(context.TELEPHONY_SERVICE);

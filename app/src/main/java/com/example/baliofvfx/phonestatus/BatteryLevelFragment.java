@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -48,8 +49,7 @@ public class BatteryLevelFragment extends Fragment {
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
         batteryLevelTextView.setText("Battery Level: " + batteryStatus.batteryLevel(getContext()));
 
-//        DatabaseReference dataref = FirebaseDatabase.getInstance().getReference();
-//        dataref.child("users").child(MainActivity.uid).child("condition").setValue("test2");
+
         Toast.makeText(getContext(), MainActivity.uid, Toast.LENGTH_SHORT).show();
 
         if(isMyServiceRunning(BatteryStatus.class) == true && isMyServiceRunning(NetworkStatus.class)){
@@ -100,8 +100,8 @@ public class BatteryLevelFragment extends Fragment {
         final Intent BatteryStatusIntent = new Intent(getContext(), BatteryStatus.class);
         final Intent WiFiIntent = new Intent(getContext(), NetworkStatus.class);
 
-        System.out.println(isMyServiceRunning(BatteryStatus.class));
 
+        System.out.println(isMyServiceRunning(BatteryStatus.class));
 
         batteryLevelImage = (ImageView)view.findViewById(R.id.batteryLevelImageViewID);
 
@@ -112,7 +112,9 @@ public class BatteryLevelFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+
                     getActivity().startService(BatteryStatusIntent);
+
                     System.out.println("Click! Battery Status isServiceRunning: " + isMyServiceRunning(BatteryStatus.class));
 
                     getActivity().startService(WiFiIntent);
