@@ -3,8 +3,6 @@ package com.example.baliofvfx.phonestatus;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -79,8 +76,6 @@ public class StatsFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        System.out.println("Running runnable");
-                        Toast.makeText(getContext(), "Runnable running", Toast.LENGTH_SHORT).show();
                         textview.setText("System uptime: " + uptimeArray[0] + ":" + uptimeArray[1] + ":" + uptimeArray[2] + ":" + uptimeArray[3]);
                     }
                 });
@@ -88,15 +83,13 @@ public class StatsFragment extends Fragment {
             }
         }, 0, 1000);
 
-
-
-
     }
-
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        System.out.println("ON DESTROY! ");
+        t.purge();
         t.cancel();
     }
 

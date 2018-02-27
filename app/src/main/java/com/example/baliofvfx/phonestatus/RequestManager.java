@@ -4,12 +4,9 @@ package com.example.baliofvfx.phonestatus;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +15,7 @@ import static android.content.ContentValues.TAG;
 /**
  * Created by BalioFVFX on 12/29/2017.
  */
+
 
 public class RequestManager {
 
@@ -52,7 +50,7 @@ public class RequestManager {
 
 
 
-    public static void  updateBatteryLevel(final float batteryLevel, final float batteryTemp, final boolean isCharging, final boolean usbCharge, final boolean acCharge){
+    public static void  updateBatteryLevel(final float batteryLevel, final float batteryTemp, final boolean isCharging, final boolean usbCharge, final boolean acCharge, final String uid){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Object> Stats = new HashMap<>();
         Stats.put("Battery level", batteryLevel);
@@ -62,7 +60,9 @@ public class RequestManager {
         Stats.put("AC charge", acCharge);
 
 
-        db.collection("users").document(MainActivity.uid).update(Stats).addOnSuccessListener(new OnSuccessListener<Void>(){
+
+
+        db.collection("users").document(uid).update(Stats).addOnSuccessListener(new OnSuccessListener<Void>(){
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d(TAG, "DocumentSnapshot successfully written!");
@@ -77,6 +77,26 @@ public class RequestManager {
                 });
     }
 
+    public static void  sendWiFi(final String wifiName, final String uid){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Map<String, Object> Stats = new HashMap<>();
+        Stats.put("Wi-Fi", wifiName);
+
+
+        db.collection("users").document(uid).update(Stats).addOnSuccessListener(new OnSuccessListener<Void>(){
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "DocumentSnapshot successfully written!");
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        Log.w(TAG, "Error writing document", e);
+                    }
+                });
+    }
 
 
 }

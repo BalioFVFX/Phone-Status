@@ -12,6 +12,9 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.telephony.TelephonyManager;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Created by BalioFVFX on 12/28/2017.
@@ -47,10 +50,10 @@ public class NetworkStatus extends Service {
                     new java.util.TimerTask() {
                         @Override
                         public void run() {
-                            //RequestManager.sendWiFi(MainActivity.uid, wifiName);
+                            RequestManager.sendWiFi(wifiName, FirebaseAuth.getInstance().getUid());
                         }
                     },
-                    5000
+                    9000
             );
 
 

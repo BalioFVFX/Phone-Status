@@ -1,7 +1,5 @@
 package com.example.baliofvfx.phonestatus;
 
-
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;

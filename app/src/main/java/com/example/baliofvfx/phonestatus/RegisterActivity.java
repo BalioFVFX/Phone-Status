@@ -14,9 +14,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GetTokenResult;
-import com.google.firebase.auth.GoogleAuthCredential;
-import com.google.firebase.auth.GoogleAuthProvider;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -46,7 +43,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         if(currentUser != null){
-            Toast.makeText(this,  currentUser.getEmail(), Toast.LENGTH_SHORT).show();
             MainActivity.uid = currentUser.getUid();
             System.out.println(currentUser.getUid());
             Intent intent = new Intent(this, MainActivity.class);

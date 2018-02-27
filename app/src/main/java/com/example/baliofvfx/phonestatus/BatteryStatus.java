@@ -1,8 +1,6 @@
 package com.example.baliofvfx.phonestatus;
 
 
-import android.app.DownloadManager;
-import android.app.IntentService;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -12,8 +10,9 @@ import android.os.BatteryManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
-import android.widget.Toast;
 
+
+import com.google.firebase.auth.FirebaseAuth;
 
 
 
@@ -22,8 +21,6 @@ import android.widget.Toast;
  */
 
 public class BatteryStatus extends Service {
-
-
 
 
 
@@ -59,7 +56,7 @@ public class BatteryStatus extends Service {
             boolean acCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_AC;
 
 
-            RequestManager.updateBatteryLevel(batteryLevel, batteryTemp, isCharging, usbCharge, acCharge);
+            RequestManager.updateBatteryLevel(batteryLevel, batteryTemp, isCharging, usbCharge, acCharge, FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         }
     };

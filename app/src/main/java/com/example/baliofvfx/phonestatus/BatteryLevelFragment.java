@@ -8,7 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.provider.Settings;
+
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import android.widget.Toast;
+
 import android.widget.ToggleButton;
 
 
@@ -31,7 +31,6 @@ public class BatteryLevelFragment extends Fragment {
     private BatteryStatus batteryStatus = new BatteryStatus();
     private ImageView batteryLevelImage;
     private ToggleButton desktopMonitoringToggleButton;
-    private TextView currentUserTextView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,14 +43,11 @@ public class BatteryLevelFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        currentUserTextView.setText("Username: " + MainActivity.currentUsername);
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
         batteryLevelTextView.setText("Battery Level: " + batteryStatus.batteryLevel(getContext()));
 
 
-        Toast.makeText(getContext(), MainActivity.uid, Toast.LENGTH_SHORT).show();
-
-        if(isMyServiceRunning(BatteryStatus.class) == true && isMyServiceRunning(NetworkStatus.class)){
+        if(isMyServiceRunning(BatteryStatus.class) == true /*&& isMyServiceRunning(NetworkStatus.class)*/){
             desktopMonitoringToggleButton.setChecked(true);
         }
         else{
@@ -104,7 +100,6 @@ public class BatteryLevelFragment extends Fragment {
 
         batteryLevelImage = (ImageView)view.findViewById(R.id.batteryLevelImageViewID);
 
-        currentUserTextView = (TextView)view.findViewById(R.id.usernameTextView);
         desktopMonitoringToggleButton = (ToggleButton)view.findViewById(R.id.monitoringToggleButton);
 
         desktopMonitoringToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
