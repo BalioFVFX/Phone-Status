@@ -1,9 +1,11 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.baliofvfx.phonestatus.BatteryLevelFragment">
+    tools:context="com.example.baliofvfx.phonestatus.BatteryLevelFragment"
+    tools:layout_editor_absoluteY="81dp">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,39 +13,40 @@
         android:id="@+id/batteryLevelTextViewID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Battery level:" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="40dp"
+        android:text="Battery level:"
+        app:layout_constraintEnd_toEndOf="@+id/batteryLevelImageViewID"
+        app:layout_constraintTop_toBottomOf="@+id/batteryLevelImageViewID" />
 
     <ImageView
         android:id="@+id/batteryLevelImageViewID"
         android:layout_width="120dp"
         android:layout_height="150dp"
-        android:layout_above="@+id/batteryLevelTextViewID"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:src="@android:color/background_dark" />
+        android:layout_marginTop="88dp"
+        android:src="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ToggleButton
         android:id="@+id/monitoringToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/batteryLevelTextViewID"
-        android:layout_marginTop="66dp"
-        android:layout_toEndOf="@+id/batteryLevelTextViewID"
-        android:layout_toRightOf="@+id/batteryLevelTextViewID"
-        android:text="ToggleButton" />
+        android:layout_marginEnd="44dp"
+        android:text="ToggleButton"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/monitoringToggleButton"
-        android:layout_alignBottom="@+id/monitoringToggleButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:text="Enable desktop monitoring" />
+        android:layout_marginBottom="127dp"
+        android:layout_marginStart="28dp"
+        android:text="Enable desktop monitoring"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
