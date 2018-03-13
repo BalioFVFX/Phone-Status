@@ -33,7 +33,7 @@ public class RequestManager {
 
 
 
-        db.collection("users").document(MainActivity.uid).set(Stats).addOnSuccessListener(new OnSuccessListener<Void>(){
+        db.collection("users").document(uid).set(Stats).addOnSuccessListener(new OnSuccessListener<Void>(){
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d(TAG, "DocumentSnapshot successfully written!");
