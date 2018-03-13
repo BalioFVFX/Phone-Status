@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        System.out.println("ON START ACCESS KEY IS: " + accesToken);
+z
     }
 
     @Override
