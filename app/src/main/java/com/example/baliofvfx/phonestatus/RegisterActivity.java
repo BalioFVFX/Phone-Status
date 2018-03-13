@@ -43,8 +43,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         if(currentUser != null){
-            MainActivity.uid = currentUser.getUid();
-            System.out.println(currentUser.getUid());
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -66,7 +64,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            MainActivity.uid = user.getUid();
                             RequestManager.initCollectionForUser(user.getUid()); // Init the user to the database
                             Intent intent = new Intent(getBaseContext(), MainActivity.class);
                             startActivity(intent);

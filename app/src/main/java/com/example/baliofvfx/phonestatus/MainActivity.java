@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity {
-    
+
     BatteryLevelFragment batteryLevelFragment = new BatteryLevelFragment();
     TemperaturesFragment temperaturesFragment = new TemperaturesFragment();
     StatsFragment statsFragment = new StatsFragment();
