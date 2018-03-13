@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import android.widget.ToggleButton;
 
-
+import java.text.DecimalFormat;
 
 
 public class BatteryLevelFragment extends Fragment {
@@ -44,7 +44,7 @@ public class BatteryLevelFragment extends Fragment {
     public void onStart() {
         super.onStart();
         drawBatteryLevel((int)batteryStatus.batteryLevel(getContext()),batteryLevelImage);
-        batteryLevelTextView.setText("Battery Level: " + batteryStatus.batteryLevel(getContext()));
+        batteryLevelTextView.setText("Battery Level: " + String.format("%.2f", batteryStatus.batteryLevel(getContext())) + "%");
 
 
         if(isMyServiceRunning(BatteryStatus.class) == true /*&& isMyServiceRunning(NetworkStatus.class)*/){
