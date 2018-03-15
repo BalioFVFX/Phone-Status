@@ -47,7 +47,7 @@ public class BatteryLevelFragment extends Fragment {
         batteryLevelTextView.setText("Battery Level: " + String.format("%.2f", batteryStatus.batteryLevel(getContext())) + "%");
 
 
-        if(isMyServiceRunning(BatteryStatus.class) == true /*&& isMyServiceRunning(NetworkStatus.class)*/){
+        if(isMyServiceRunning(BatteryStatus.class) == true && isMyServiceRunning(NetworkStatus.class)){
             desktopMonitoringToggleButton.setChecked(true);
         }
         else{
