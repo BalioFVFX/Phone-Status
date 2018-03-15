@@ -28,10 +28,10 @@ public class NetworkStatus extends Service {
         String name = wifiInfo.getSSID();
 
         if(name == "<unknown ssid>" || name == "0x"){
-            wifiTextView.setText("WiFi: Not connected");
+            wifiTextView.setText("Wi-Fi: Not connected");
         }
         else{
-            wifiTextView.setText("WiFi: " + name);
+            wifiTextView.setText("Wi-Fi: " + name);
 
         }
     }
