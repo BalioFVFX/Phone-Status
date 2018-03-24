@@ -43,6 +43,7 @@ public class RequestManager {
                 Map<String, Object> BatteryDBStats = new HashMap<>();
                 BatteryDBStats.put("author_id", uid);
                 BatteryDBStats.put("Battery level", 0.0);
+                BatteryDBStats.put("Is charging", false);
 
                 batteryDB.collection("users").document(uid).collection("level").document("l").set(BatteryDBStats).addOnSuccessListener(new OnSuccessListener<Void>(){
                     @Override
@@ -71,10 +72,11 @@ public class RequestManager {
 
 
 
-    public static void  updateBatteryLevel(final float batteryLevel, final String uid){
+    public static void  updateBatteryLevel(final float batteryLevel, final boolean isCharging, final String uid){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Object> Stats = new HashMap<>();
         Stats.put("Battery level", batteryLevel);
+        Stats.put("Is charging", isCharging);
 
 
         db.collection("users").document(uid).collection("level").document("l").update(Stats).addOnSuccessListener(new OnSuccessListener<Void>(){
