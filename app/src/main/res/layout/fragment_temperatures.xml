@@ -18,6 +18,7 @@
         android:layout_marginTop="132dp"
         android:src="@mipmap/battery_icon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
