@@ -56,7 +56,9 @@ public class BatteryStatus extends Service {
             boolean acCharge = chargePlug == BatteryManager.BATTERY_PLUGGED_AC;
 
 
-            RequestManager.updateBatteryLevel(batteryLevel, batteryTemp, isCharging, usbCharge, acCharge, FirebaseAuth.getInstance().getCurrentUser().getUid());
+            RequestManager.updateBatteryLevel(batteryLevel, FirebaseAuth.getInstance().getCurrentUser().getUid());
+            RequestManager.updateBatteryTemperature(batteryTemp, FirebaseAuth.getInstance().getCurrentUser().getUid());
+            RequestManager.updateBatteryChargingStatus(isCharging, usbCharge, acCharge, FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         }
     };
