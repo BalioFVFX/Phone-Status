@@ -15,19 +15,23 @@
         android:id="@+id/batteryLevelTextViewID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="40dp"
         android:text="Battery level:"
-        app:layout_constraintEnd_toEndOf="@+id/batteryLevelImageViewID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/batteryLevelImageViewID" />
 
     <ImageView
         android:id="@+id/batteryLevelImageViewID"
-        android:layout_width="120dp"
+        android:layout_width="250dp"
         android:layout_height="150dp"
         android:layout_marginTop="88dp"
         android:src="@android:color/background_dark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

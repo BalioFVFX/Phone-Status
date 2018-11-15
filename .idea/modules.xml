@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Phone-Status.iml" filepath="$PROJECT_DIR$/Phone-Status.iml" />
-      <module fileurl="file://C:\Users\BalioFVFX\Desktop\Phone Status GitHub\Phone-Status\PhoneStatus.iml" filepath="C:\Users\BalioFVFX\Desktop\Phone Status GitHub\Phone-Status\PhoneStatus.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
