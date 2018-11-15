@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -72,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 return true;
+            case R.id.how_to_use:
+                Toast.makeText(getBaseContext(), "TODO", Toast.LENGTH_LONG).show();
             default:
                 return super.onOptionsItemSelected(item);
         }
