@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     BatteryLevelFragment batteryLevelFragment = new BatteryLevelFragment();
     TemperaturesFragment temperaturesFragment = new TemperaturesFragment();
     StatsFragment statsFragment = new StatsFragment();
+    HowToUseFragment howToUseFragment = new HowToUseFragment();
 
 
 
@@ -74,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.how_to_use:
-                Toast.makeText(getBaseContext(), "TODO", Toast.LENGTH_LONG).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.MainActivityId, howToUseFragment).commit();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
